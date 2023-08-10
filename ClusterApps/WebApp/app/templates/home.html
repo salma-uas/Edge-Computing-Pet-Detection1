@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+<!--Body-->
+{% block content %}
+    <div class='main-image'>
+        <img src="{{ url_for('static', path='/images/animal_banner.jpg') }}" alt="Frankfurt UAS Logo"/>
+    </div>
+
+    <section class="summary">
+        <h2>Cloud Based Animal Ditection Application</h2>
+        <p>
+            distributed system consists of several independent computers that communicate with each other over a network. 
+            Different distributed system architectures exist in the computer science.
+        </p>
+    </section>
+
+    <section>
+        <div class="card">
+            <ul>
+
+            {% for data in sensor_data %}
+                <li class="sensor-item">
+                    <a href="{{url_for('get_image', img=data.image_name)}}">
+                        <div>
+                            <h3>{{data.detected_at}}</h3>
+                            <div class="animal-count">Total Animal: {{data.confidances|length}}</div>
+                        </div>
+                    </a>
+                    <div>
+                            {% for confidance in data.confidances %}
+                                <div><strong>{{confidance.animal_name}}</strong>: {{confidance.confidance_ratio}}% confidance</div>
+                            {% endfor %}
+                        </div>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+{% endblock content %}

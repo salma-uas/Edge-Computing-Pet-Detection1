@@ -1,0 +1,11 @@
+.env
+.venv
+env/
+venv/
+ENV/
+.__pycache__/
+practice/
+__pycache__/
+
+.DS_Store/
+.DS_Store

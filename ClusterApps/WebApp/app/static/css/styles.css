@@ -1,0 +1,260 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f6f5fe;
+    font-size: 15px;
+    line-height: 1.75;
+    margin: 0;
+    text-align: left;
+    font-weight: 400;
+    color: #6c757d;
+}
+
+/*--------------------
+Headins
+-----------------*/
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Muli", sans-serif;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: .5rem;
+    color: #212529;
+}
+
+.h1,
+h1 {
+    font-size: 2.125rem;
+    line-height: 40px;
+}
+
+.h2,
+h2 {
+    font-size: 1.625rem;
+}
+
+.h3,
+h3 {
+    font-size: 1.375rem;
+}
+
+.h4,
+h4 {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.btn {
+    font-size: 18px;
+    transition: all 0.5s ease;
+}
+
+.btn-primary {
+    padding: 0.625rem 1.75rem;
+    background-color: #308dc7;
+    border-color: #308dc7;
+    box-shadow: 0 2px 6px 0 rgba(114, 176, 242, 0.5);
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+    background-color: #1a76af;
+}
+
+.icon {
+    width: 4.5rem;
+    height: 4.5rem;
+    padding: 2rem;
+    filter: drop-shadow(7px 7px 0 #312765);
+}
+
+.btn__icon {
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+    transition: 0.3s;
+}
+
+button:hover .btn__icon {
+    transform: translateX(0.25rem);
+}
+
+/* End Button Style */
+
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    background-color: #faf7ff;
+    color: #2b2b2b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+}
+
+/*--------------------
+Header img
+-----------------*/
+.main-image {
+    width: 100%;
+    height: 25rem;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.main-image img {
+    width: 110%;
+    height: 100%;
+    object-fit: cover;
+    transform: rotateZ(-5deg) translateY(-4rem) translateX(-1rem);
+}
+
+.logo {
+    width: 4rem;
+    padding: 1rem;
+}
+
+.nav-item {
+    margin-left: 1.25rem;
+}
+
+.nav-item:first-child {
+    margin-left: 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    padding-left: 1rem;
+    color: #2b2b2b;
+}
+
+.links a {
+    text-decoration: none;
+    padding-left: 0.25rem;
+    color: #2b2b2b;
+}
+
+.links a:hover,
+.links a:active,
+.nav-link:hover,
+.nav-link:active,
+.nav-link.active,
+.links {
+    color: #727cf5;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-toggle .fa-chevron-down {
+    font-size: 13px;
+}
+
+.mt-10 {
+    margin-top: 8rem;
+}
+
+/* h2 {
+    font-size: 20px;
+} */
+
+img {
+    height: 40px;
+}
+
+.mt-3 {
+    margin-top: 3rem;
+}
+
+.input-size .form-group input {
+    border-radius: 0;
+}
+
+.input-size .form-group input:focus {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+
+.card {
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 14px;
+    background-color: white;
+    width: 70%;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.summary {
+    text-align: center;
+    max-width: 45rem;
+    width: 90%;
+    margin: auto;
+    margin-top: -11rem;
+    position: relative;
+    background-color: #008ec7;
+    color: white;
+    border-radius: 14px;
+    padding: 1rem;
+    box-shadow: 0 1px 18px 10px rgba(0, 0, 0, 0.25);
+}
+
+.summary h2 {
+    font-size: 2rem;
+    margin-top: 0;
+    color: white;
+}
+
+.sensor-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.sensor-item h3 {
+    margin: 0 0 0.25rem 0;
+}
+
+.sensor-item a, a:hover, a:focus, a:active{
+
+    text-decoration: none;
+    color: inherit;
+}
+
+.animal-count {
+    margin-top: 0.25rem;
+    font-weight: bold;
+    color: #008ec7;
+    font-size: 1.25rem;
+}
+
+.img-content{
+    display: block;
+    width: 70%;
+    height: 70%;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    margin: auto;
+}

@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  animal_detector:
+    # image: dev.dockerhub.nuruddinsayeed.store/animal_detector:latest
+    # image: nuruddinsayeed/webapp-animal_detector
+    container_name: 'animal_detector_app'
+    build:
+      context: ./
+      dockerfile: ./Docker/Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      - ENV=docker
+      - TZ=Europe/Berlin
+    volumes:
+      - ./:/usr/src/app:ro # read-only volume
+      - ./Logs/:/usr/src/app/app/Logs/
+      - ./mysql:/var/lib/mysql
+    restart: on-failure

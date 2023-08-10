@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio-deployment
+  labels:
+    app: minio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minio
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: minio-pv-claim
+      containers:
+        - name: minio
+          image: minio/minio:latest
+          args:
+            - server
+            - /storage
+          ports:
+            - containerPort: 9000
+          env:
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: kubectl-secret
+                  key: minio-access
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: kubectl-secret
+                  key: minio-secret
+          volumeMounts:
+            - name: storage
+              mountPath: "/storage"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-service
+spec:
+  selector:
+    app: minio
+  ports:
+    - protocol: TCP
+      port: 9000
+      targetPort: 9000

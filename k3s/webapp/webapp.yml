@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  labels:
+    app: webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: animal-detector
+          image: nuruddinsayeed/webapp-animal_detector:102
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MYSQL_HOST
+              value: "mysql-service"
+            - name: MINIO_HOST
+              value: "minio-service"
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: kubectl-secret
+                  key: mysql-user
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kubectl-secret
+                  key: mysql-password
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: kubectl-secret
+                  key: minio-access
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: kubectl-secret
+                  key: minio-secret
+              # - name: MONGO_INITDB_ROOT_USERNAME
+              #   valueFrom:
+              #     secretKeyRef:
+              #       name: mongo-secret
+              #       key: mongo-user
+              # - name: MONGO_INITDB_ROOT_PASSWORD
+              #   valueFrom:
+              #     secretKeyRef:
+              #       name: mongo-secret
+              #       key: mongo-passworld
+              # - name: MONGO_URL
+              #   valueFrom:
+              #     configMapKeyRef:
+              #       name: mongo-config
+              #       key: mongo-url
+            - name: K3S_MYSQL_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config
+                  key: mysql-url
+            - name: K3S_MINIO_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: minio-config
+                  key: minio-url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: webapp
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30080
